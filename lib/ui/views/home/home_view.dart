@@ -47,6 +47,12 @@ class HomeView extends StackedView<HomeViewModel> {
                   );
                 },
               ),
+              verticalSpaceMedium,
+              Center(
+                child: Text(
+                  'Connection Status: ${viewModel.connectionStatus}',
+                ),
+              ),
             ],
           ),
         ),
@@ -59,4 +65,11 @@ class HomeView extends StackedView<HomeViewModel> {
     BuildContext context,
   ) =>
       HomeViewModel();
+
+  @override
+  void onViewModelReady(
+    HomeViewModel viewModel,
+  ) {
+    viewModel.updateConnectionStatus();
+  }
 }

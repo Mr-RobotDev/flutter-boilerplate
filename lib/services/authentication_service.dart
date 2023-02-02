@@ -5,6 +5,6 @@ class AuthenticationService {
   }
 
   bool userLoggedIn() {
-    return false;
+    return true;
   }
 }

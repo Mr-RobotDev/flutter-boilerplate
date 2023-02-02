@@ -39,8 +39,6 @@ class LoginViewModel extends FormViewModel {
         description: ksOfflineError,
       );
     }
-    Future.delayed(const Duration(seconds: 1));
-
     updateConnectionStatus(result);
   }
 
