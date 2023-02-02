@@ -1,13 +1,11 @@
-import 'dart:async';
-
 import 'package:boiler_plate/app/app.locator.dart';
 import 'package:boiler_plate/app/app.router.dart';
 import 'package:boiler_plate/enums/dialog_type.dart';
 import 'package:boiler_plate/services/authentication_service.dart';
+import 'package:boiler_plate/services/connection_service.dart';
 import 'package:boiler_plate/ui/common/app_strings.dart';
 import 'package:boiler_plate/ui/views/signup/signup_view.form.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:flutter/services.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
@@ -15,35 +13,27 @@ class LoginViewModel extends FormViewModel {
   final _navigationService = locator<NavigationService>();
   final _dialogService = locator<DialogService>();
   final _authenticationService = locator<AuthenticationService>();
+  final _connectionService = locator<ConnectionService>();
 
-  ConnectivityResult connectionStatus = ConnectivityResult.none;
-  final Connectivity connectivity = Connectivity();
-  late StreamSubscription<ConnectivityResult> connectivitySubscription;
+  late ConnectivityResult _connectionStatus;
+
+  ConnectivityResult get connectionStatus => _connectionStatus;
+
   bool _isPasswordVisible = false;
 
   bool get isPasswordVisible => _isPasswordVisible;
 
+  LoginViewModel() {
+    _connectionStatus = _connectionService.connectionStatus;
+    _connectionService.connectivitySubscription
+        .onData((ConnectivityResult result) {
+      _connectionStatus = result;
+      notifyListeners();
+    });
+  }
+
   void togglePasswordVisibility() {
     _isPasswordVisible = !_isPasswordVisible;
-    notifyListeners();
-  }
-
-  void initConnectivity() async {
-    late ConnectivityResult result;
-    try {
-      result = await connectivity.checkConnectivity();
-    } on PlatformException {
-      await _dialogService.showCustomDialog(
-        variant: DialogType.error,
-        title: ksSomethingWentWrongError,
-        description: ksOfflineError,
-      );
-    }
-    updateConnectionStatus(result);
-  }
-
-  void updateConnectionStatus(ConnectivityResult result) {
-    connectionStatus = result;
     notifyListeners();
   }
 

@@ -254,16 +254,11 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
   @override
   void onViewModelReady(LoginViewModel viewModel) {
     syncFormWithViewModel(viewModel);
-    viewModel.initConnectivity();
-    viewModel.connectivitySubscription = viewModel
-        .connectivity.onConnectivityChanged
-        .listen(viewModel.updateConnectionStatus);
   }
 
   @override
   void onDispose(LoginViewModel viewModel) {
     super.onDispose(viewModel);
     disposeForm();
-    viewModel.connectivitySubscription.cancel();
   }
 }

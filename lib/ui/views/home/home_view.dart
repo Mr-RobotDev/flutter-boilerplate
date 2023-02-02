@@ -66,10 +66,10 @@ class HomeView extends StackedView<HomeViewModel> {
   ) =>
       HomeViewModel();
 
-  @override
-  void onViewModelReady(
-    HomeViewModel viewModel,
-  ) {
-    viewModel.updateConnectionStatus();
-  }
+  // @override
+  // void onViewModelReady(
+  //   HomeViewModel viewModel,
+  // ) {
+  //   viewModel.updateConnectionStatus();
+  // }
 }

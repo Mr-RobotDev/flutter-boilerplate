@@ -9,11 +9,9 @@ class ConnectionService {
 
   ConnectionService() {
     connectivitySubscription =
-        connectivity.onConnectivityChanged.listen(updateConnectionStatus);
-  }
-
-  void updateConnectionStatus(ConnectivityResult result) {
-    connectionStatus = result;
+        connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+      connectionStatus = result;
+    });
   }
 
   void dispose() {

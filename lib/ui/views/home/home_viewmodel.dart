@@ -6,10 +6,16 @@ import 'package:boiler_plate/app/app.locator.dart';
 class HomeViewModel extends BaseViewModel {
   final _connectionService = locator<ConnectionService>();
 
-  late ConnectivityResult connectionStatus;
+  late ConnectivityResult _connectionStatus;
 
-  void updateConnectionStatus() {
-    connectionStatus = _connectionService.connectionStatus;
-    notifyListeners();
+  ConnectivityResult get connectionStatus => _connectionStatus;
+
+  HomeViewModel() {
+    _connectionStatus = _connectionService.connectionStatus;
+    _connectionService.connectivitySubscription
+        .onData((ConnectivityResult result) {
+      _connectionStatus = result;
+      notifyListeners();
+    });
   }
 }
