@@ -89,7 +89,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   Align(
                     alignment: Alignment.centerRight,
                     child: TextButton.icon(
-                      onPressed: () {},
+                      onPressed: viewModel.navigateToForgotPassword,
                       label: const Text('Forgot Password?'),
                       icon: Icon(
                         FontAwesomeIcons.circleQuestion,
@@ -100,27 +100,12 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   verticalSpaceSmall,
                   viewModel.isBusy
                       ? const MyCircularProgressIndicator()
-                      : ElevatedButton.icon(
+                      : ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(double.infinity, 64),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                bottomRight: Radius.circular(25),
-                                bottomLeft: Radius.circular(25),
-                                topRight: Radius.circular(25),
-                              ),
-                            ),
+                            minimumSize: const Size(128, 48),
                           ),
                           onPressed: viewModel.login,
-                          icon: Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Icon(
-                              FontAwesomeIcons.arrowRight,
-                              color: Theme.of(context).colorScheme.onBackground,
-                            ),
-                          ),
-                          label: const Text('Login'),
+                          child: const Text('Login'),
                         ),
                   verticalSpaceMedium,
                   TextButton(
@@ -152,40 +137,22 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                     children: [
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(150, 64),
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(25),
-                              bottomLeft: Radius.circular(25),
-                              topRight: Radius.circular(25),
-                            ),
-                          ),
+                          minimumSize: const Size(128, 48),
                         ),
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           FontAwesomeIcons.google,
-                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                         label: const Text('Google'),
                       ),
                       horizontalSpaceMedium,
                       ElevatedButton.icon(
                         style: ElevatedButton.styleFrom(
-                          minimumSize: const Size(150, 64),
-                          shape: const RoundedRectangleBorder(
-                            borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(10),
-                              bottomRight: Radius.circular(25),
-                              bottomLeft: Radius.circular(25),
-                              topRight: Radius.circular(25),
-                            ),
-                          ),
+                          minimumSize: const Size(128, 48),
                         ),
                         onPressed: () {},
-                        icon: Icon(
+                        icon: const Icon(
                           FontAwesomeIcons.facebook,
-                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                         label: const Text('Facebook'),
                       ),
@@ -194,20 +161,11 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   verticalSpaceMedium,
                   ElevatedButton.icon(
                     style: ElevatedButton.styleFrom(
-                      minimumSize: const Size(150, 64),
-                      shape: const RoundedRectangleBorder(
-                        borderRadius: BorderRadius.only(
-                          topLeft: Radius.circular(10),
-                          bottomRight: Radius.circular(25),
-                          bottomLeft: Radius.circular(25),
-                          topRight: Radius.circular(25),
-                        ),
-                      ),
+                      minimumSize: const Size(128, 48),
                     ),
                     onPressed: () {},
-                    icon: Icon(
+                    icon: const Icon(
                       FontAwesomeIcons.apple,
-                      color: Theme.of(context).colorScheme.onBackground,
                     ),
                     label: const Text('Apple'),
                   ),

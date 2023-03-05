@@ -52,11 +52,10 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                   ),
                   verticalSpaceMedium,
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Username',
                       prefixIcon: Icon(
                         FontAwesomeIcons.solidUser,
-                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                     enableSuggestions: false,
@@ -67,11 +66,10 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                   ),
                   verticalSpaceMedium,
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Email',
                       prefixIcon: Icon(
                         FontAwesomeIcons.solidEnvelope,
-                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                     ),
                     enableSuggestions: false,
@@ -84,16 +82,14 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Password',
-                      prefixIcon: Icon(
+                      prefixIcon: const Icon(
                         FontAwesomeIcons.lock,
-                        color: Theme.of(context).colorScheme.onBackground,
                       ),
                       suffixIcon: IconButton(
                         icon: Icon(
                           viewModel.isPasswordVisible
                               ? FontAwesomeIcons.eyeSlash
                               : FontAwesomeIcons.eye,
-                          color: Theme.of(context).colorScheme.onBackground,
                         ),
                         onPressed: viewModel.togglePasswordVisibility,
                       ),
@@ -106,27 +102,12 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                   verticalSpaceMedium,
                   viewModel.isBusy
                       ? const MyCircularProgressIndicator()
-                      : ElevatedButton.icon(
+                      : ElevatedButton(
                           style: ElevatedButton.styleFrom(
-                            minimumSize: const Size(double.infinity, 64),
-                            shape: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(
-                                topLeft: Radius.circular(10),
-                                bottomRight: Radius.circular(25),
-                                bottomLeft: Radius.circular(25),
-                                topRight: Radius.circular(25),
-                              ),
-                            ),
-                          ),
-                          icon: Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Icon(
-                              FontAwesomeIcons.arrowRight,
-                              color: Theme.of(context).colorScheme.onBackground,
-                            ),
+                            minimumSize: const Size(128, 48),
                           ),
                           onPressed: () {},
-                          label: const Text('Sign Up'),
+                          child: const Text('Sign Up'),
                         ),
                   verticalSpaceMedium,
                   TextButton(

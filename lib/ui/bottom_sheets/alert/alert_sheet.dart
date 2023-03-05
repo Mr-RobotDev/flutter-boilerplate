@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:boiler_plate/ui/common/ui_helpers.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class AlertSheet extends StatelessWidget {
@@ -15,25 +14,26 @@ class AlertSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 15),
+      padding: const EdgeInsets.all(20),
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(10),
+          topRight: Radius.circular(10),
+        ),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisSize: MainAxisSize.min,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                request.title ?? 'Hello Stacked Sheet!!',
-                style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                      fontWeight: FontWeight.bold,
-                    ),
-              ),
-              const Icon(
-                FontAwesomeIcons.triangleExclamation,
-              ),
-            ],
-          ),
+          if (request.title != null) ...[
+            verticalSpaceTiny,
+            Text(
+              request.title!,
+              style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+            ),
+          ],
           if (request.description != null) ...[
             verticalSpaceTiny,
             Text(
@@ -43,15 +43,20 @@ class AlertSheet extends StatelessWidget {
               softWrap: true,
             ),
           ],
-          verticalSpaceLarge,
+          verticalSpaceMedium,
+          Align(
+            alignment: Alignment.center,
+            child: ElevatedButton(
+              onPressed: () => completer!(
+                SheetResponse(confirmed: true),
+              ),
+              child: const Text(
+                'Got it',
+              ),
+            ),
+          ),
+          verticalSpaceMedium,
         ],
-      ),
-      decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.background,
-        borderRadius: const BorderRadius.only(
-          topLeft: Radius.circular(10),
-          topRight: Radius.circular(10),
-        ),
       ),
     );
   }

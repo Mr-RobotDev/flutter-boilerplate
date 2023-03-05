@@ -5,14 +5,15 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
+import 'package:boiler_plate/ui/views/forgot/forgot_view.dart' as _i6;
 import 'package:boiler_plate/ui/views/home/home_view.dart' as _i3;
 import 'package:boiler_plate/ui/views/login/login_view.dart' as _i4;
 import 'package:boiler_plate/ui/views/signup/signup_view.dart' as _i5;
 import 'package:boiler_plate/ui/views/startup/startup_view.dart' as _i2;
-import 'package:flutter/material.dart' as _i6;
+import 'package:flutter/material.dart' as _i7;
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i7;
+import 'package:stacked_services/stacked_services.dart' as _i8;
 
 class Routes {
   static const startupView = '/startup-view';
@@ -23,11 +24,14 @@ class Routes {
 
   static const signupView = '/signup-view';
 
+  static const forgotView = '/forgot-view';
+
   static const all = <String>{
     startupView,
     homeView,
     loginView,
     signupView,
+    forgotView,
   };
 }
 
@@ -48,6 +52,10 @@ class StackedRouter extends _i1.RouterBase {
     _i1.RouteDef(
       Routes.signupView,
       page: _i5.SignupView,
+    ),
+    _i1.RouteDef(
+      Routes.forgotView,
+      page: _i6.ForgotView,
     ),
   ];
 
@@ -82,6 +90,15 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
+    _i6.ForgotView: (data) {
+      final args = data.getArgs<ForgotViewArguments>(
+        orElse: () => const ForgotViewArguments(),
+      );
+      return MaterialPageRoute<dynamic>(
+        builder: (context) => _i6.ForgotView(key: args.key),
+        settings: data,
+      );
+    },
   };
 
   @override
@@ -93,16 +110,22 @@ class StackedRouter extends _i1.RouterBase {
 class LoginViewArguments {
   const LoginViewArguments({this.key});
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 }
 
 class SignupViewArguments {
   const SignupViewArguments({this.key});
 
-  final _i6.Key? key;
+  final _i7.Key? key;
 }
 
-extension NavigatorStateExtension on _i7.NavigationService {
+class ForgotViewArguments {
+  const ForgotViewArguments({this.key});
+
+  final _i7.Key? key;
+}
+
+extension NavigatorStateExtension on _i8.NavigationService {
   Future<dynamic> navigateToStartupView([
     int? routerId,
     bool preventDuplicates = true,
@@ -132,7 +155,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> navigateToLoginView({
-    _i6.Key? key,
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -148,7 +171,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> navigateToSignupView({
-    _i6.Key? key,
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -157,6 +180,22 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }) async {
     return navigateTo<dynamic>(Routes.signupView,
         arguments: SignupViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToForgotView({
+    _i7.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return navigateTo<dynamic>(Routes.forgotView,
+        arguments: ForgotViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -192,7 +231,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> replaceWithLoginView({
-    _i6.Key? key,
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -208,7 +247,7 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }
 
   Future<dynamic> replaceWithSignupView({
-    _i6.Key? key,
+    _i7.Key? key,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -217,6 +256,22 @@ extension NavigatorStateExtension on _i7.NavigationService {
   }) async {
     return replaceWith<dynamic>(Routes.signupView,
         arguments: SignupViewArguments(key: key),
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithForgotView({
+    _i7.Key? key,
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  }) async {
+    return replaceWith<dynamic>(Routes.forgotView,
+        arguments: ForgotViewArguments(key: key),
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

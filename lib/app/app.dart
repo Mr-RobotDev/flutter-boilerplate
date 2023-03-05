@@ -5,6 +5,7 @@ import 'package:stacked_services/stacked_services.dart';
 import 'package:boiler_plate/services/authentication_service.dart';
 import 'package:boiler_plate/ui/views/login/login_view.dart';
 import 'package:boiler_plate/ui/views/signup/signup_view.dart';
+import 'package:boiler_plate/ui/views/forgot/forgot_view.dart';
 // @stacked-import
 
 @StackedApp(routes: [
@@ -12,6 +13,7 @@ import 'package:boiler_plate/ui/views/signup/signup_view.dart';
   MaterialRoute(page: HomeView),
   MaterialRoute(page: LoginView),
   MaterialRoute(page: SignupView),
+  MaterialRoute(page: ForgotView),
 // @stacked-route
 ], dependencies: [
   LazySingleton(classType: NavigationService),
