@@ -5,14 +5,22 @@ import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 class HomeViewModel extends BaseViewModel {
-  final _bottomSheetService = locator<BottomSheetService>();
   final _navigationService = locator<NavigationService>();
+  final _bottomSheetService = locator<BottomSheetService>();
+  final _snackbarService = locator<SnackbarService>();
 
-  Future<void> showBottomSheet() async {
+  void showBottomSheet() async {
     await _bottomSheetService.showCustomSheet(
       variant: BottomSheetType.alert,
       title: 'Bottom Sheet',
       description: 'This is custom bottom sheet',
+    );
+  }
+
+  void showSnackBar() async {
+    _snackbarService.showSnackbar(
+      title: 'Snackbar',
+      message: 'This is custom snackbar',
     );
   }
 

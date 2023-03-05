@@ -1,3 +1,4 @@
+import 'package:boiler_plate/ui/common/ui_helpers.dart';
 import 'package:boiler_plate/ui/dumb_widgets/my_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
@@ -25,12 +26,22 @@ class HomeView extends StackedView<HomeViewModel> {
                   onTap: viewModel.logout,
                 ),
                 title: 'Home',
-                trailing: GestureDetector(
-                  child: const Icon(
-                    Icons.more_vert,
-                  ),
-                  onTap: viewModel.showBottomSheet,
+              ),
+              verticalSpaceLarge,
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(128, 48),
                 ),
+                onPressed: viewModel.showBottomSheet,
+                child: const Text('Show Bottom Sheet'),
+              ),
+              verticalSpaceLarge,
+              ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(128, 48),
+                ),
+                onPressed: viewModel.showSnackBar,
+                child: const Text('Show SnackBar'),
               ),
             ],
           ),
