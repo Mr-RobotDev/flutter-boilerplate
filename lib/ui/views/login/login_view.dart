@@ -1,7 +1,5 @@
-import 'package:boiler_plate/ui/common/app_strings.dart';
 import 'package:boiler_plate/ui/common/ui_helpers.dart';
 import 'package:boiler_plate/ui/dumb_widgets/circular_progress_indicator.dart';
-import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
@@ -213,29 +211,6 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                     ),
                     label: const Text('Apple'),
                   ),
-                  verticalSpaceMedium,
-                  viewModel.connectionStatus == ConnectivityResult.none
-                      ? Container(
-                          height: 40,
-                          width: double.infinity,
-                          alignment: Alignment.center,
-                          child: Text(
-                            ksOfflineError,
-                            style: Theme.of(context)
-                                .textTheme
-                                .bodyMedium!
-                                .copyWith(
-                                  color: Theme.of(context)
-                                      .colorScheme
-                                      .onBackground,
-                                ),
-                          ),
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).colorScheme.onPrimary,
-                            borderRadius: BorderRadius.circular(10),
-                          ),
-                        )
-                      : const SizedBox.shrink(),
                 ],
               ),
             ),

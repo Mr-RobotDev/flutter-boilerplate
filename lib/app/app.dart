@@ -1,4 +1,3 @@
-import 'package:boiler_plate/services/connection_service.dart';
 import 'package:stacked/stacked_annotations.dart';
 import 'package:boiler_plate/ui/views/home/home_view.dart';
 import 'package:boiler_plate/ui/views/startup/startup_view.dart';
@@ -20,7 +19,6 @@ import 'package:boiler_plate/ui/views/signup/signup_view.dart';
   LazySingleton(classType: BottomSheetService),
   LazySingleton(classType: SnackbarService),
   LazySingleton(classType: AuthenticationService),
-  LazySingleton(classType: ConnectionService),
 // @stacked-service
 ])
 class App {}

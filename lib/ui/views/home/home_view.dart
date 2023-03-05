@@ -47,12 +47,6 @@ class HomeView extends StackedView<HomeViewModel> {
                   );
                 },
               ),
-              verticalSpaceMedium,
-              Center(
-                child: Text(
-                  'Connection Status: ${viewModel.connectionStatus}',
-                ),
-              ),
             ],
           ),
         ),
