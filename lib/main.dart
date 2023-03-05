@@ -40,6 +40,8 @@ class MyApp extends StatelessWidget {
         subThemesData: const FlexSubThemesData(
           blendOnLevel: 20,
           blendOnColors: false,
+          elevatedButtonRadius: 32.0,
+          inputDecoratorRadius: 40.0,
         ),
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         fontFamily: GoogleFonts.poppins().fontFamily,
@@ -61,6 +63,8 @@ class MyApp extends StatelessWidget {
         appBarOpacity: 0.90,
         subThemesData: const FlexSubThemesData(
           blendOnLevel: 30,
+          elevatedButtonRadius: 32.0,
+          inputDecoratorRadius: 40.0,
         ),
         visualDensity: FlexColorScheme.comfortablePlatformDensity,
         fontFamily: GoogleFonts.poppins().fontFamily,

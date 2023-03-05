@@ -20,9 +20,15 @@ class HomeView extends StackedView<HomeViewModel> {
           child: Column(
             children: [
               MyAppBar(
+                leading: GestureDetector(
+                  child: const Icon(Icons.logout),
+                  onTap: viewModel.logout,
+                ),
                 title: 'Home',
                 trailing: GestureDetector(
-                  child: const Icon(Icons.settings),
+                  child: const Icon(
+                    Icons.more_vert,
+                  ),
                   onTap: viewModel.showBottomSheet,
                 ),
               ),

@@ -1,7 +1,6 @@
 import 'package:boiler_plate/ui/common/ui_helpers.dart';
 import 'package:boiler_plate/ui/dumb_widgets/circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
@@ -55,7 +54,7 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                     decoration: const InputDecoration(
                       hintText: 'Username',
                       prefixIcon: Icon(
-                        FontAwesomeIcons.solidUser,
+                        Icons.person,
                       ),
                     ),
                     enableSuggestions: false,
@@ -69,7 +68,7 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                     decoration: const InputDecoration(
                       hintText: 'Email',
                       prefixIcon: Icon(
-                        FontAwesomeIcons.solidEnvelope,
+                        Icons.email,
                       ),
                     ),
                     enableSuggestions: false,
@@ -83,14 +82,12 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                     decoration: InputDecoration(
                       hintText: 'Password',
                       prefixIcon: const Icon(
-                        FontAwesomeIcons.lock,
+                        Icons.lock,
                       ),
                       suffixIcon: IconButton(
-                        icon: Icon(
-                          viewModel.isPasswordVisible
-                              ? FontAwesomeIcons.eyeSlash
-                              : FontAwesomeIcons.eye,
-                        ),
+                        icon: Icon(viewModel.isPasswordVisible
+                            ? Icons.visibility
+                            : Icons.visibility_off),
                         onPressed: viewModel.togglePasswordVisibility,
                       ),
                     ),
@@ -112,7 +109,17 @@ class SignupView extends StackedView<SignupViewModel> with $SignupView {
                   verticalSpaceMedium,
                   TextButton(
                     onPressed: viewModel.navigateToLogin,
-                    child: const Text('Already have an account? Login'),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: const [
+                        Icon(
+                          Icons.arrow_back_ios,
+                        ),
+                        horizontalSpaceSmall,
+                        Text('Already have an account? Login'),
+                      ],
+                    ),
                   ),
                 ],
               ),

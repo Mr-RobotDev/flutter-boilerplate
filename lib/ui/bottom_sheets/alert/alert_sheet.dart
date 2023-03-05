@@ -47,6 +47,9 @@ class AlertSheet extends StatelessWidget {
           Align(
             alignment: Alignment.center,
             child: ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                minimumSize: const Size(128, 48),
+              ),
               onPressed: () => completer!(
                 SheetResponse(confirmed: true),
               ),

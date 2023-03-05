@@ -1,7 +1,6 @@
 import 'package:boiler_plate/ui/common/ui_helpers.dart';
 import 'package:boiler_plate/ui/dumb_widgets/circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
@@ -40,11 +39,9 @@ class ForgotView extends StackedView<ForgotViewModel> with $ForgotView {
                   ),
                 ),
                 padding: const EdgeInsets.all(16),
-                child: const Icon(
-                  FontAwesomeIcons.fingerprint,
-                ),
+                child: const Icon(Icons.fingerprint),
               ),
-              verticalSpaceLarge,
+              verticalSpaceMedium,
               Text(
                 'Forgot Password',
                 style: Theme.of(context).textTheme.headlineSmall,
@@ -56,11 +53,10 @@ class ForgotView extends StackedView<ForgotViewModel> with $ForgotView {
               ),
               verticalSpaceMedium,
               TextFormField(
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   hintText: 'Email',
                   prefixIcon: Icon(
-                    FontAwesomeIcons.solidEnvelope,
-                    color: Theme.of(context).colorScheme.onBackground,
+                    Icons.email,
                   ),
                 ),
                 enableSuggestions: false,
@@ -71,37 +67,35 @@ class ForgotView extends StackedView<ForgotViewModel> with $ForgotView {
               ),
               verticalSpaceMedium,
               viewModel.isBusy
-                  ? const MyCircularProgressIndicator()
-                  : ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                        minimumSize: const Size(double.infinity, 64),
-                        shape: const RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                            topLeft: Radius.circular(10),
-                            bottomRight: Radius.circular(25),
-                            bottomLeft: Radius.circular(25),
-                            topRight: Radius.circular(25),
-                          ),
+                  ? const Center(
+                      child: MyCircularProgressIndicator(),
+                    )
+                  : Center(
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: const Size(128, 48),
                         ),
+                        onPressed: () {},
+                        child: const Text('Reset Password'),
                       ),
-                      onPressed: () {},
-                      child: const Text('Reset Password'),
                     ),
               verticalSpaceMedium,
-              TextButton(
-                onPressed: viewModel.navigateToLogin,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(
-                      FontAwesomeIcons.arrowLeft,
-                      color: Theme.of(context).colorScheme.onBackground,
-                    ),
-                    horizontalSpaceSmall,
-                    const Text(
-                      'Back to Login',
-                    ),
-                  ],
+              Center(
+                child: TextButton(
+                  onPressed: viewModel.navigateToLogin,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: const [
+                      Icon(
+                        Icons.arrow_back_ios,
+                      ),
+                      horizontalSpaceSmall,
+                      Text(
+                        'Back to Login',
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ],
@@ -116,4 +110,15 @@ class ForgotView extends StackedView<ForgotViewModel> with $ForgotView {
     BuildContext context,
   ) =>
       ForgotViewModel();
+
+  @override
+  void onViewModelReady(ForgotViewModel viewModel) {
+    syncFormWithViewModel(viewModel);
+  }
+
+  @override
+  void onDispose(ForgotViewModel viewModel) {
+    super.onDispose(viewModel);
+    disposeForm();
+  }
 }

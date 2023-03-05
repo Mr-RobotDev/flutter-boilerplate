@@ -1,7 +1,6 @@
 import 'package:boiler_plate/ui/common/ui_helpers.dart';
 import 'package:boiler_plate/ui/dumb_widgets/circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
 
@@ -49,11 +48,10 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   ),
                   verticalSpaceMedium,
                   TextFormField(
-                    decoration: InputDecoration(
+                    decoration: const InputDecoration(
                       hintText: 'Email',
                       prefixIcon: Icon(
-                        FontAwesomeIcons.solidEnvelope,
-                        color: Theme.of(context).colorScheme.onBackground,
+                        Icons.email,
                       ),
                     ),
                     enableSuggestions: false,
@@ -66,16 +64,14 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   TextFormField(
                     decoration: InputDecoration(
                       hintText: 'Password',
-                      prefixIcon: Icon(
-                        FontAwesomeIcons.lock,
-                        color: Theme.of(context).colorScheme.onBackground,
+                      prefixIcon: const Icon(
+                        Icons.lock,
                       ),
                       suffixIcon: IconButton(
                         icon: Icon(
                           viewModel.isPasswordVisible
-                              ? FontAwesomeIcons.eyeSlash
-                              : FontAwesomeIcons.eye,
-                          color: Theme.of(context).colorScheme.onBackground,
+                              ? Icons.visibility
+                              : Icons.visibility_off,
                         ),
                         onPressed: viewModel.togglePasswordVisibility,
                       ),
@@ -88,13 +84,9 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                   verticalSpaceSmall,
                   Align(
                     alignment: Alignment.centerRight,
-                    child: TextButton.icon(
+                    child: TextButton(
                       onPressed: viewModel.navigateToForgotPassword,
-                      label: const Text('Forgot Password?'),
-                      icon: Icon(
-                        FontAwesomeIcons.circleQuestion,
-                        color: Theme.of(context).colorScheme.onBackground,
-                      ),
+                      child: const Text('Forgot Password?'),
                     ),
                   ),
                   verticalSpaceSmall,
@@ -141,7 +133,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                         ),
                         onPressed: () {},
                         icon: const Icon(
-                          FontAwesomeIcons.google,
+                          Icons.g_translate,
                         ),
                         label: const Text('Google'),
                       ),
@@ -152,7 +144,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                         ),
                         onPressed: () {},
                         icon: const Icon(
-                          FontAwesomeIcons.facebook,
+                          Icons.facebook,
                         ),
                         label: const Text('Facebook'),
                       ),
@@ -165,7 +157,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
                     ),
                     onPressed: () {},
                     icon: const Icon(
-                      FontAwesomeIcons.apple,
+                      Icons.phone,
                     ),
                     label: const Text('Apple'),
                   ),

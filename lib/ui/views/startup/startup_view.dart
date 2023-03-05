@@ -1,4 +1,3 @@
-import 'package:boiler_plate/ui/dumb_widgets/circular_progress_indicator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:stacked/stacked.dart';
@@ -14,9 +13,25 @@ class StartupView extends StackedView<StartupViewModel> {
     StartupViewModel viewModel,
     Widget? child,
   ) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: MyCircularProgressIndicator(),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              padding: const EdgeInsets.all(48.0),
+              decoration: BoxDecoration(
+                border: Border.all(
+                  color: Theme.of(context).primaryColor,
+                ),
+                shape: BoxShape.circle,
+              ),
+              child: const Text(
+                'Your app logo',
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
