@@ -22,8 +22,8 @@ class HomeView extends StackedView<HomeViewModel> {
             children: [
               MyAppBar(
                 leading: GestureDetector(
-                  child: const Icon(Icons.logout),
                   onTap: viewModel.logout,
+                  child: const Icon(Icons.logout),
                 ),
                 title: 'Home',
               ),
