@@ -15,8 +15,9 @@ class AlertSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(20),
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.background,
+        borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(10),
           topRight: Radius.circular(10),
         ),
@@ -58,7 +59,6 @@ class AlertSheet extends StatelessWidget {
               ),
             ),
           ),
-          verticalSpaceMedium,
         ],
       ),
     );
