@@ -121,6 +121,32 @@ extension ValueProperties on FormViewModel {
   String? get emailValue => this.formValueMap[EmailValueKey] as String?;
   String? get passwordValue => this.formValueMap[PasswordValueKey] as String?;
 
+  set emailValue(String? value) {
+    this.setData(
+      this.formValueMap
+        ..addAll({
+          EmailValueKey: value,
+        }),
+    );
+
+    if (_LoginViewTextEditingControllers.containsKey(EmailValueKey)) {
+      _LoginViewTextEditingControllers[EmailValueKey]?.text = value ?? '';
+    }
+  }
+
+  set passwordValue(String? value) {
+    this.setData(
+      this.formValueMap
+        ..addAll({
+          PasswordValueKey: value,
+        }),
+    );
+
+    if (_LoginViewTextEditingControllers.containsKey(PasswordValueKey)) {
+      _LoginViewTextEditingControllers[PasswordValueKey]?.text = value ?? '';
+    }
+  }
+
   bool get hasEmail =>
       this.formValueMap.containsKey(EmailValueKey) &&
       (emailValue?.isNotEmpty ?? false);
@@ -137,6 +163,10 @@ extension ValueProperties on FormViewModel {
       this.fieldsValidationMessages[EmailValueKey];
   String? get passwordValidationMessage =>
       this.fieldsValidationMessages[PasswordValueKey];
+  void clearForm() {
+    emailValue = '';
+    passwordValue = '';
+  }
 }
 
 extension Methods on FormViewModel {

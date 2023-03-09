@@ -111,18 +111,33 @@ class LoginViewArguments {
   const LoginViewArguments({this.key});
 
   final _i7.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
 }
 
 class SignupViewArguments {
   const SignupViewArguments({this.key});
 
   final _i7.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
 }
 
 class ForgotViewArguments {
   const ForgotViewArguments({this.key});
 
   final _i7.Key? key;
+
+  @override
+  String toString() {
+    return '{"key": "$key"}';
+  }
 }
 
 extension NavigatorStateExtension on _i8.NavigationService {

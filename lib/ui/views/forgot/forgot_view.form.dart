@@ -111,6 +111,19 @@ extension ValueProperties on FormViewModel {
       this.fieldsValidationMessages.values.every((element) => element == null);
   String? get emailValue => this.formValueMap[EmailValueKey] as String?;
 
+  set emailValue(String? value) {
+    this.setData(
+      this.formValueMap
+        ..addAll({
+          EmailValueKey: value,
+        }),
+    );
+
+    if (_ForgotViewTextEditingControllers.containsKey(EmailValueKey)) {
+      _ForgotViewTextEditingControllers[EmailValueKey]?.text = value ?? '';
+    }
+  }
+
   bool get hasEmail =>
       this.formValueMap.containsKey(EmailValueKey) &&
       (emailValue?.isNotEmpty ?? false);
@@ -120,6 +133,9 @@ extension ValueProperties on FormViewModel {
 
   String? get emailValidationMessage =>
       this.fieldsValidationMessages[EmailValueKey];
+  void clearForm() {
+    emailValue = '';
+  }
 }
 
 extension Methods on FormViewModel {
