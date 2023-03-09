@@ -33,6 +33,7 @@ flutter run
   - Views - Login, SignUp, Forgot Password, Home
   - Custom Dialog, Snackbar, BottomSheet
   - State Management Solution
+  - Check Internet Connection
 ## Design Pattern
 
 This app is built using the MVVM design pattern, which separates the user interface (view) from the application logic and data (view model). Each view has its own corresponding view model, which is responsible for managing the state of that view.
@@ -47,6 +48,7 @@ Overall, This app's architecture is designed to be scalable, maintainable, and e
   - stacked_services: ^0.9.8
   - flex_color_scheme: ^6.1.2
   - google_fonts: ^4.0.1
+  - connectivity_plus: ^3.0.3
 
 ## Dev Dependencies
   - build_runner: ^2.2.0
