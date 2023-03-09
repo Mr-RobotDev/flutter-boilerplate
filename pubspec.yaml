@@ -39,6 +39,7 @@ dependencies:
   stacked_services: ^0.9.8
   flex_color_scheme: ^6.1.2
   google_fonts: ^4.0.1
+  connectivity_plus: ^3.0.3
 
 dev_dependencies:
   flutter_test:

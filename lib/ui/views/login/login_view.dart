@@ -179,6 +179,7 @@ class LoginView extends StackedView<LoginViewModel> with $LoginView {
   @override
   void onViewModelReady(LoginViewModel viewModel) {
     syncFormWithViewModel(viewModel);
+    viewModel.checkConnection();
   }
 
   @override
