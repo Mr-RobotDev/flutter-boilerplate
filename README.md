@@ -30,6 +30,7 @@ flutter run
 - test: unit/ui test cases
 ## Features
   - Splash View
+  - Light/Dark Theme
   - Views - Login, SignUp, Forgot Password, Home
   - Custom Dialog, Snackbar, BottomSheet
   - State Management Solution
@@ -46,8 +47,6 @@ Overall, This app's architecture is designed to be scalable, maintainable, and e
 ## Dependencies
   - stacked: ^3.1.0-beta.0
   - stacked_services: ^0.9.8
-  - flex_color_scheme: ^6.1.2
-  - google_fonts: ^4.0.1
   - connectivity_plus: ^3.0.3
 
 ## Dev Dependencies
